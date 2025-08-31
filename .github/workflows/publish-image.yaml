@@ -4,7 +4,7 @@ on:
   push:
     branches: main
     paths:
-      - "app/**"
+      - "."
       - ".github/workflows/publish-frontend.yaml"
   workflow_dispatch:
 
@@ -14,7 +14,7 @@ jobs:
     with:
       registry: ghcr.io
       image_name: hampuslundblad/osrs-dry-tracker
-      context: ./app
+      context: .
     permissions: # Needs same permissions as the reusable-publish-image.yaml, might be a better way to do this
       packages: write
       contents: read
