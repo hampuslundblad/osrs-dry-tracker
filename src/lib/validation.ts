@@ -1,5 +1,5 @@
 import type { RegisterOptions } from "react-hook-form"
-import type { FormData } from "@/types/form"
+import type { FormData } from "@/hooks/useDrynessForm"
 
 export const rateValidationRules: RegisterOptions<FormData, "rate"> = {
   required: "Rate is required",

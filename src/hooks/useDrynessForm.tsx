@@ -1,12 +1,16 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import type { FormData } from "@/types/form"
 import {
   calculateProbabilityOfAchievingAtLeastOne,
   parseRate,
 } from "@/lib/calculations"
 
-export function useDryCalculator() {
+export interface FormData {
+  rate: string
+  kills: string
+}
+
+export function useDrynessForm() {
   const [probabilityOfDrop, setProbabilityOfDrop] = useState<number | null>(
     null,
   )

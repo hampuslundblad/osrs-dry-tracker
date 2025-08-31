@@ -1,5 +1,5 @@
 import type { FieldErrors, UseFormRegister } from "react-hook-form"
-import type { FormData } from "@/types/form"
+import type { FormData } from "@/hooks/useDrynessForm"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { rateValidationRules } from "@/lib/validation"

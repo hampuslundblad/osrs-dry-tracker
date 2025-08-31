@@ -3,17 +3,18 @@ import { Button } from "@/components/ui/button"
 import { RateInput } from "@/components/form/RateInput"
 import { KillsInput } from "@/components/form/KillsInput"
 import { ResultCard } from "@/components/ResultCard"
-import { useDryCalculator } from "@/hooks/useDryCalculator"
+import { useDrynessForm } from "@/hooks/useDrynessForm"
+import { Layout } from "@/components/Layout"
 
 export const Route = createFileRoute("/")({
   component: App,
 })
 
 function App() {
-  const { form, probabilityOfDrop, killsValue, onSubmit } = useDryCalculator()
+  const { form, probabilityOfDrop, killsValue, onSubmit } = useDrynessForm()
 
   return (
-    <main className="p-2 bg-[#232323] min-h-screen flex items-center justify-center">
+    <Layout>
       <div className="w-1/3 flex flex-col gap-8">
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -32,6 +33,6 @@ function App() {
           />
         )}
       </div>
-    </main>
+    </Layout>
   )
 }

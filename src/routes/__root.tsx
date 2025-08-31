@@ -6,8 +6,8 @@ import Header from "@/components/Header"
 export const Route = createRootRoute({
   component: () => (
     <>
-      <Outlet />
       <Header />
+      <Outlet />
       <TanStackRouterDevtools />
     </>
   ),
