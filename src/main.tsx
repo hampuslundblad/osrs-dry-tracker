@@ -9,7 +9,11 @@ import { router } from "@/router.tsx"
 import { queryClient } from "@/queryClient.tsx"
 
 // Render the app
+
 const rootElement = document.getElementById("app")
+
+rootElement?.classList.add("dark")
+
 if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
