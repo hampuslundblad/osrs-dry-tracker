@@ -34,8 +34,8 @@ COPY --from=build /usr/src/app/nginx /etc/nginx/conf.d
 # Copy the build output from the dist folder into the Nginx html directory
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 
-# Expose port 3000 to allow access to the app
-EXPOSE 3000
+# Expose port 3001 to allow access to the app
+EXPOSE 3001
 
 # Run Nginx in the foreground
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
