@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
 
 interface ResultCardProps {
   probabilityOfDrop: number
@@ -19,10 +18,6 @@ export function ResultCard({ probabilityOfDrop, killsValue }: ResultCardProps) {
           The probability of getting at least one drop in {killsValue} kills is{" "}
           <span className="font-bold">{percentage}%</span>
         </div>
-        <Progress
-          value={percentage}
-          className="w-full h-2 bg-gray-200 rounded-full"
-        />
       </CardContent>
     </Card>
   )

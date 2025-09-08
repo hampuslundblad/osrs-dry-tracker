@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router"
+import { createFileRoute, useSearch } from "@tanstack/react-router"
+import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { RateInput } from "@/components/form/RateInput"
 import { KillsInput } from "@/components/form/KillsInput"
@@ -8,10 +9,31 @@ import { Layout } from "@/components/Layout"
 
 export const Route = createFileRoute("/")({
   component: App,
+  validateSearch: (search) => {
+    return {
+      kills: search.kills ? String(search.kills) : "",
+      rate: search.rate ? String(search.rate) : "",
+    }
+  },
 })
 
 function App() {
-  const { form, probabilityOfDrop, killsValue, onSubmit } = useDrynessForm()
+  const { kills, rate } = useSearch({ from: "/" })
+
+  const { form, probabilityOfDrop, submit } = useDrynessForm({
+    rate: rate,
+    kills: kills,
+  })
+
+  useEffect(() => {
+    if (rate && kills) {
+      submit({ rate, kills })
+    }
+  }, [])
+
+  const onSubmit = (data: { rate: string; kills: string }) => {
+    submit(data)
+  }
 
   return (
     <Layout>
@@ -29,7 +51,7 @@ function App() {
         {probabilityOfDrop && (
           <ResultCard
             probabilityOfDrop={probabilityOfDrop}
-            killsValue={killsValue}
+            killsValue={form.getValues("kills")}
           />
         )}
       </div>

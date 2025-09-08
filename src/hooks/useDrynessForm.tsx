@@ -10,7 +10,10 @@ export interface FormData {
   kills: string
 }
 
-export function useDrynessForm() {
+export function useDrynessForm({
+  rate: defaultRate,
+  kills: defaultKills,
+}: FormData) {
   const [probabilityOfDrop, setProbabilityOfDrop] = useState<number | null>(
     null,
   )
@@ -18,14 +21,12 @@ export function useDrynessForm() {
   const form = useForm<FormData>({
     mode: "all",
     defaultValues: {
-      rate: "",
-      kills: "",
+      rate: defaultRate,
+      kills: defaultKills,
     },
   })
 
-  const killsValue = form.watch("kills")
-
-  const onSubmit = (data: FormData) => {
+  const submit = (data: FormData) => {
     const dropRate = parseRate(data.rate)
     const killCount = parseInt(data.kills)
 
@@ -41,7 +42,6 @@ export function useDrynessForm() {
   return {
     form,
     probabilityOfDrop,
-    killsValue,
-    onSubmit,
+    submit,
   }
 }
