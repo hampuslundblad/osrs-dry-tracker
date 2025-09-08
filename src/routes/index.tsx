@@ -1,4 +1,4 @@
-import { createFileRoute, useSearch } from "@tanstack/react-router"
+import { createFileRoute, useNavigate, useSearch } from "@tanstack/react-router"
 import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { RateInput } from "@/components/form/RateInput"
@@ -20,6 +20,8 @@ export const Route = createFileRoute("/")({
 function App() {
   const { kills, rate } = useSearch({ from: "/" })
 
+  const navigate = useNavigate({ from: "/" })
+
   const { form, probabilityOfDrop, submit } = useDrynessForm({
     rate: rate,
     kills: kills,
@@ -32,6 +34,7 @@ function App() {
   }, [])
 
   const onSubmit = (data: { rate: string; kills: string }) => {
+    navigate({ to: "/", search: { rate: data.rate, kills: data.kills } })
     submit(data)
   }
 
